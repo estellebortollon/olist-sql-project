@@ -1,0 +1,100 @@
+version: 2
+
+sources:
+  - name: raw
+    database: olist-490113     
+    schema: raw_data         
+    loader: bigquery                 
+    description: Raw Olist tables
+    tables:
+     - name: customers
+       identifier: customers
+       description: Information about Olist customers
+       columns:
+        - name: customer_id
+          description: ID of the customer
+        - name: customer_unique_id
+          description: unique ID of the customer
+        - name: customer_zip_code_prefix
+          description: customer zip code
+        - name: customer_city
+          description: city of the customer
+        - name: customer_state
+          description: state of the customer
+     - name: geolocation
+       identifier: geolocation
+       description: Information about geolocation
+       columns:
+        - name: geolocation_zip_code_prefix
+        - name: geolocation_lat
+        - name: geolocation_lng
+        - name: geolocation_city
+        - name: geolocation_state
+     - name: order_items
+       identifier: order_items
+       description: Details about items in orders
+       columns:
+        - name: order_id
+        - name: order_item_id
+        - name: product_id
+        - name: seller_id
+        - name: shipping_limit_date
+        - name: price
+        - name: freight_value
+     - name: order_payments
+       identifier: order_payments
+       description: Details about payments for each order
+       columns:
+        - name: order_id
+        - name: payment_sequential
+        - name: payment_type
+        - name: payment_installments
+        - name: payment_value	
+     - name: reviews
+       identifier: order_reviews
+       description: Reviews for each order
+       columns:
+        - name: review_id
+        - name: order_id
+        - name: review_score
+        - name: review_creation_date
+        - name: review_answer_timestamp
+     - name: orders
+       identifier: orders
+       description: Information about orders
+       columns:
+        - name: order_id
+        - name: customer_id
+        - name: order_status
+        - name: order_purchase_timestamp
+        - name: order_approved_at
+        - name: order_delivered_carrier_date
+        - name: order_delivered_customer_date
+        - name: order_estimated_delivery_date	
+     - name: product_category_name_translation
+       identifier: product_category_name_translation
+       description: Translation of product category names from Portuguese to English
+       columns:
+        - name: string_field_0	
+        - name: string_field_1
+     - name: products
+       identifier: products
+       description: Information about products
+       columns:
+        - name: product_id
+        - name: product_category_name
+        - name: product_name_lenght
+        - name: product_description_lenght
+        - name: product_photos_qty
+        - name: product_weight_g
+        - name: product_length_cm
+        - name: product_height_cm
+        - name: product_width_cm
+     - name: sellers
+       identifier: sellers
+       description: Information about Olist sellers
+       columns:
+        - name: seller_id
+        - name: seller_zip_code_prefix
+        - name: seller_city
+        - name: seller_state   							
